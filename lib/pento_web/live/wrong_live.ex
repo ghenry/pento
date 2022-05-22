@@ -1,23 +1,49 @@
 defmodule PentoWeb.WrongLive do
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
+  require Logger
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, score: 0, message: "Make a guess:", current_time: time())}
+    Logger.info("Mounting WrongLive")
+    {
+      :ok,
+      assign(
+        socket,
+        score: 0,
+        message: "Make a guess (from 1 to 10):",
+        current_time: time(),
+        random_number: :rand.uniform(10)
+      )
+    }
   end
 
   def handle_event("guess", %{"number" => guess} = data, socket) do
     message = "Your guess: #{guess}. Wrong. Guess again. "
     score = socket.assigns.score - 1
     current_time = time()
-    {
-      :noreply,
-      assign(
-        socket,
-        message: message,
-        score: score,
-        current_time: current_time
-      )
-    }
+    random_number = socket.assigns.random_number
+    Logger.info("Guess is: #{guess}")
+    Logger.info("WrongLive Random Number is: #{random_number}")
+
+    if guess == random_number do
+      Logger.info("WrongLive guess is correct. Generating new random number.")
+      message = "Your guess: #{guess}. Correct! "
+      score = socket.assigns.score + 1
+
+      {
+        :noreply,
+        assign(socket, score: score, message: message, current_time: current_time, random_number: :rand.uniform(10))
+      }
+    else
+      {
+        :noreply,
+        assign(
+          socket,
+          message: message,
+          score: score,
+          current_time: current_time
+        )
+      }
+    end
   end
 
   def render(assigns) do
@@ -35,7 +61,7 @@ defmodule PentoWeb.WrongLive do
     """
   end
 
-  def time() do
+  defp time() do
     #DateTime.utc_now |> to_string
     Calendar.strftime(DateTime.utc_now, "%y-%m-%d %I:%M:%S %p")
   end
