@@ -30,7 +30,7 @@ defmodule PentoWeb.Router do
   #   pipe_through :api
   # end
 
-  # Enables LiveDashboard
+  # Enables a password protected LiveDashboard
   import Phoenix.LiveDashboard.Router
 
   scope "/" do
