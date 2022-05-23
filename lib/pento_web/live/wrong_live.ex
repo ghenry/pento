@@ -21,10 +21,10 @@ defmodule PentoWeb.WrongLive do
     score = socket.assigns.score - 1
     current_time = time()
     random_number = socket.assigns.random_number
-    Logger.info("Guess is: #{guess}")
+    Logger.info("Guess is: #{inspect guess}")
     Logger.info("WrongLive Random Number is: #{random_number}")
 
-    if guess == random_number do
+    if String.to_integer(guess) == random_number do
       Logger.info("WrongLive guess is correct. Generating new random number.")
       message = "Your guess: #{guess}. Correct! "
       score = socket.assigns.score + 1
