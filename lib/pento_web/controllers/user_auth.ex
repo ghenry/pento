@@ -109,7 +109,7 @@ defmodule PentoWeb.UserAuth do
   end
 
   @doc """
-  Used for routes that require the user to not be authenticated.
+  Used for routes that require the user to not be authenticated.*.eex
   """
   def redirect_if_user_is_authenticated(conn, _opts) do
     if conn.assigns[:current_user] do

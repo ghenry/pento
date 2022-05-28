@@ -2,6 +2,7 @@ defmodule PentoWeb.WrongLive do
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
   require Logger
 
+  alias Pento.Accounts
   def mount(_params, _session, socket) do
     Logger.info("Mounting WrongLive")
     {
@@ -10,6 +11,7 @@ defmodule PentoWeb.WrongLive do
         socket,
         score: 0,
         message: "Make a guess (from 1 to 10):",
+        session_id: _session["live_socket_id"],
         current_time: time(),
         random_number: :rand.uniform(10)
       )
