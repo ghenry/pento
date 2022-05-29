@@ -57,7 +57,25 @@ defmodule PentoWeb.Telemetry do
       summary("vm.memory.total", unit: {:byte, :kilobyte}),
       summary("vm.total_run_queue_lengths.total"),
       summary("vm.total_run_queue_lengths.cpu"),
-      summary("vm.total_run_queue_lengths.io")
+      summary("vm.total_run_queue_lengths.io"),
+
+      # Swoosh Metrics
+      summary("swoosh.deliver.stop",
+        unit: {:native, :millisecond},
+        description: "Number of successful deliveries"
+      ),
+      summary("swoosh.deliver.exception",
+        unit: {:native, :millisecond},
+        description: "Number of failed deliveries"
+      ),
+      summary("swoosh.deliver_many.stop",
+        unit: {:native, :millisecond},
+        description: "Number of successful deliveries"
+      ),
+      summary("swoosh.deliver_many.exception",
+        unit: {:native, :millisecond},
+        description: "Number of failed deliveries"
+      ),
     ]
   end
 
