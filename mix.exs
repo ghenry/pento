@@ -41,7 +41,7 @@ defmodule Pento.MixProject do
       {:gettext, "~> 0.18"},
       {:hackney, "~> 1.9"},
       {:jason, "~> 1.2"},
-      {:phoenix, "~> 1.6.9"},
+      {:phoenix, "~> 1.6.10"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.6.1"},

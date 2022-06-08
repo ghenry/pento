@@ -3,7 +3,7 @@ defmodule PentoWeb.WrongLive do
   require Logger
 
   alias Pento.Accounts
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     Logger.info("Mounting WrongLive")
     {
       :ok,
@@ -11,14 +11,14 @@ defmodule PentoWeb.WrongLive do
         socket,
         score: 0,
         message: "Make a guess (from 1 to 10):",
-        session_id: _session["live_socket_id"],
+        session_id: session["live_socket_id"],
         current_time: time(),
         random_number: :rand.uniform(10)
       )
     }
   end
 
-  def handle_event("guess", %{"number" => guess} = data, socket) do
+  def handle_event("guess", %{"number" => guess} = _data, socket) do
     message = "Your guess: #{guess}. Wrong. Guess again. "
     score = socket.assigns.score - 1
     current_time = time()
