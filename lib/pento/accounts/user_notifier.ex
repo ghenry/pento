@@ -6,6 +6,7 @@ defmodule Pento.Accounts.UserNotifier do
   # Delivers the email using the application mailer.
   defp deliver(recipient, subject, body) do
     email_from = "support@" <> System.get_env("PENTO_SENDGRID_DOMAIN") || "example.com"
+
     email =
       new()
       |> to(recipient)

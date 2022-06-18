@@ -75,7 +75,7 @@ defmodule PentoWeb.Telemetry do
       summary("swoosh.deliver_many.exception",
         unit: {:native, :millisecond},
         description: "Number of failed deliveries"
-      ),
+      )
     ]
   end
 

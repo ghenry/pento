@@ -3,8 +3,10 @@ defmodule PentoWeb.WrongLive do
   require Logger
 
   alias Pento.Accounts
+
   def mount(_params, session, socket) do
     Logger.info("Mounting WrongLive")
+
     {
       :ok,
       assign(
@@ -23,7 +25,7 @@ defmodule PentoWeb.WrongLive do
     score = socket.assigns.score - 1
     current_time = time()
     random_number = socket.assigns.random_number
-    Logger.info("Guess is: #{inspect guess}")
+    Logger.info("Guess is: #{inspect(guess)}")
     Logger.info("WrongLive Random Number is: #{random_number}")
 
     if String.to_integer(guess) == random_number do
@@ -33,7 +35,12 @@ defmodule PentoWeb.WrongLive do
 
       {
         :noreply,
-        assign(socket, score: score, message: message, current_time: current_time, random_number: :rand.uniform(10))
+        assign(socket,
+          score: score,
+          message: message,
+          current_time: current_time,
+          random_number: :rand.uniform(10)
+        )
       }
     else
       {
@@ -64,7 +71,7 @@ defmodule PentoWeb.WrongLive do
   end
 
   defp time() do
-    #DateTime.utc_now |> to_string
-    Calendar.strftime(DateTime.utc_now, "%y-%m-%d %I:%M:%S %p")
+    # DateTime.utc_now |> to_string
+    Calendar.strftime(DateTime.utc_now(), "%y-%m-%d %I:%M:%S %p")
   end
 end

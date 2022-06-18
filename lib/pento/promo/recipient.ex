@@ -12,5 +12,4 @@ defmodule Pento.Promo.Recipient do
     |> validate_required([:first_name, :email])
     |> validate_format(:email, ~r/@/)
   end
-
 end
