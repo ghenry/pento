@@ -7,6 +7,8 @@ defmodule Pento.Application do
 
   @impl true
   def start(_type, _args) do
+    Appsignal.Phoenix.LiveView.attach() # <--- attach the LiveView Telemetry handlers
+
     children = [
       # Start the Ecto repository
       Pento.Repo,
