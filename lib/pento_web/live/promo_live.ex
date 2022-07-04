@@ -42,6 +42,9 @@ defmodule PentoWeb.PromoLive do
         %{"recipient" => recipient_params},
         socket
       ) do
+    # Slow it down a bit to make sure the user sees the save button disappear.
+    :timer.sleep(3000)
+
     # Call email service and email code
     case Promo.send_promo(recipient_params, socket) do
       {:ok, _} ->
