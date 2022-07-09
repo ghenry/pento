@@ -1,4 +1,4 @@
-defmodule Pento.Repo.Migrations.CreateUsersAuthTables do
+defmodule Pento.Repo.Migrations.AddUsernameUsersTable do
   use Ecto.Migration
 
   def change do
