@@ -63,6 +63,9 @@ defmodule PentoWeb.Router do
   scope "/", PentoWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
+    get "/login", UserSessionController, :new
+    post "/login", UserSessionController, :create
+
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
     get "/users/log_in", UserSessionController, :new
@@ -100,6 +103,8 @@ defmodule PentoWeb.Router do
 
   scope "/", PentoWeb do
     pipe_through [:browser]
+
+    delete "/logout", UserSessionController, :delete
 
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
