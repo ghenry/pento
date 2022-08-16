@@ -60,6 +60,8 @@ defmodule PentoWeb.Router do
 
   ## Authentication routes
 
+  use Kaffy.Routes, scope: "/admin", pipe_through: [:admins_only]
+
   scope "/", PentoWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 

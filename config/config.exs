@@ -17,6 +17,11 @@ config :pento, PentoWeb.Endpoint,
   pubsub_server: Pento.PubSub,
   live_view: [signing_salt: "llEXHFFr"]
 
+config :kaffy,
+  otp_app: :pento,
+  ecto_repo: Pento.Repo,
+  router: PentoWeb.Router
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
