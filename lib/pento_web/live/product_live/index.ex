@@ -3,10 +3,17 @@ defmodule PentoWeb.ProductLive.Index do
 
   alias Pento.Catalog
   alias Pento.Catalog.Product
+  alias Pento.SentrypeerEvents
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :products, list_products())}
+    if connected?(socket), do: SentrypeerEvents.subscribe()
+
+    {:ok,
+     assign(socket,
+       sentrypeer_event: "No event yet",
+       products: list_products()
+     )}
   end
 
   @impl true
@@ -38,6 +45,12 @@ defmodule PentoWeb.ProductLive.Index do
     {:ok, _} = Catalog.delete_product(product)
 
     {:noreply, assign(socket, :products, list_products())}
+  end
+
+  @impl true
+  def handle_info({:sentrypeer_event_created, event}, socket) do
+    IO.puts("SentrypeerEvent created and received in LiveView.")
+    {:noreply, assign(socket, :sentrypeer_event, event)}
   end
 
   defp list_products do

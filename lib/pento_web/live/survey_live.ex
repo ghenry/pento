@@ -11,8 +11,10 @@ defmodule PentoWeb.SurveyLive do
   end
 
   defp assign_demographic(%{assigns: %{current_user: current_user}} = socket) do
-    assign(socket,
+    assign(
+      socket,
       :demographic,
-      Survey.get_demographic_by_user(current_user))
+      Survey.get_demographic_by_user(current_user)
+    )
   end
 end

@@ -28,9 +28,11 @@ defmodule PentoWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PentoWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PentoWeb do
+    pipe_through :api
+
+    resources "/events", SentrypeerEventController, only: [:create, :index, :show]
+  end
 
   # Enables a password protected LiveDashboard
   import Phoenix.LiveDashboard.Router

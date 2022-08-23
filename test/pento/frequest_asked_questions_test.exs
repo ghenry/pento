@@ -35,7 +35,12 @@ defmodule Pento.FrequestAskedQuestionsTest do
 
     test "update_faq/2 with valid data updates the faq" do
       faq = faq_fixture()
-      update_attrs = %{answer: "some updated answer", question: "some updated question", upvote_count: 43}
+
+      update_attrs = %{
+        answer: "some updated answer",
+        question: "some updated question",
+        upvote_count: 43
+      }
 
       assert {:ok, %FAQ{} = faq} = FrequestAskedQuestions.update_faq(faq, update_attrs)
       assert faq.answer == "some updated answer"

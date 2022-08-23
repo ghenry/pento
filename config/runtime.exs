@@ -77,6 +77,7 @@ if config_env() == :prod or config_env() == :dev do
     adapter: Swoosh.Adapters.Sendgrid,
     api_key: System.get_env("PENTO_SENDGRID_API_KEY"),
     domain: System.get_env("PENTO_SENDGRID_DOMAIN")
+
   #
   # For this example you need include a HTTP client required by Swoosh API client.
   # Swoosh supports Hackney and Finch out of the box:

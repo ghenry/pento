@@ -5,7 +5,11 @@ defmodule PentoWeb.FAQLiveTest do
   import Pento.FrequestAskedQuestionsFixtures
 
   @create_attrs %{answer: "some answer", question: "some question", upvote_count: 42}
-  @update_attrs %{answer: "some updated answer", question: "some updated question", upvote_count: 43}
+  @update_attrs %{
+    answer: "some updated answer",
+    question: "some updated question",
+    upvote_count: 43
+  }
   @invalid_attrs %{answer: nil, question: nil, upvote_count: nil}
 
   defp create_faq(_) do
