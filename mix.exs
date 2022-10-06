@@ -46,7 +46,7 @@ defmodule Pento.MixProject do
       {:jason, "~> 1.2"},
       {:kaffy, "~> 0.9.2"},
       {:live_admin, "~> 0.5.0"},
-      {:phoenix, "~> 1.6.10"},
+      {:phoenix, "~> 1.6.13"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.6.1"},
