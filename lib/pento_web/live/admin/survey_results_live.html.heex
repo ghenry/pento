@@ -1,1 +1,15 @@
-<h1>Survey Results</h1>
+<div>
+<!-- https://stackoverflow.com/questions/40971719/protocol-phoenix-html-safe-not-implemented-elixir-phoenix -->
+    <h1>Survey Results</h1>
+    <table>
+        <%= for {key, value} <- @products_with_average_ratings do %>
+        <tr>
+            <td><%= key %></td>
+            <td><%= value %></td>
+        </tr>
+        <% end %>
+    </table>
+    <div id="survey-results-chart">
+        <%= @chart_svg %>
+    </div>
+</div>

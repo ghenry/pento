@@ -37,6 +37,7 @@ defmodule Pento.MixProject do
       {:appsignal_phoenix, "~> 2.0"},
       {:bcrypt_elixir, "~> 3.0"},
       {:chromic_pdf, "~> 1.2"},
+      {:contex, "~> 0.4.0"},
       {:ecto_psql_extras, "~> 0.6"},
       {:ecto_sql, "~> 3.6"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
