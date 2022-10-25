@@ -61,6 +61,12 @@ defmodule PentoWeb do
     end
   end
 
+  def chart_live do
+    quote do
+      unquote(chart_helpers())
+    end
+  end
+
   def component do
     quote do
       use Phoenix.Component
@@ -101,6 +107,12 @@ defmodule PentoWeb do
       import PentoWeb.ErrorHelpers
       import PentoWeb.Gettext
       alias PentoWeb.Router.Helpers, as: Routes
+    end
+  end
+
+  defp chart_helpers do
+    quote do
+      import PentoWeb.BarChart
     end
   end
 
