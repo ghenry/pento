@@ -5,14 +5,13 @@ defmodule PentoWeb.RatingLive.Form do
 
   def update(assigns, socket) do
     {:ok,
-      socket
-      |> assign(assigns)
-      |> assign_rating()
-      |> assign_changeset()}
+     socket
+     |> assign(assigns)
+     |> assign_rating()
+     |> assign_changeset()}
   end
 
-  def assign_rating(
-        %{assigns: %{current_user: user, product: product}} = socket) do
+  def assign_rating(%{assigns: %{current_user: user, product: product}} = socket) do
     assign(socket, :rating, %Rating{user_id: user.id, product_id: product.id})
   end
 
@@ -29,6 +28,7 @@ defmodule PentoWeb.RatingLive.Form do
       socket.assigns.rating
       |> Survey.change_rating(rating_params)
       |> Map.put(:action, :validate)
+
     assign(socket, :changeset, changeset)
   end
 
@@ -37,8 +37,7 @@ defmodule PentoWeb.RatingLive.Form do
   end
 
   def save_rating(
-        %{assigns: %{product_index: product_index, product: product}
-        } = socket,
+        %{assigns: %{product_index: product_index, product: product}} = socket,
         rating_params
       ) do
     case Survey.create_rating(rating_params) do
@@ -46,6 +45,7 @@ defmodule PentoWeb.RatingLive.Form do
         product = %{product | ratings: [rating]}
         send(self(), {:created_rating, product, product_index})
         socket
+
       {:error, %Ecto.Changeset{} = changeset} ->
         assign(socket, changeset: changeset)
     end

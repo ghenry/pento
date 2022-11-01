@@ -17,6 +17,8 @@ defmodule Pento.Application do
       PentoWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Pento.PubSub},
+      # Start the Presence system
+      PentoWeb.Presence,
       # Start the Endpoint (http/https)
       PentoWeb.Endpoint,
       # Start a worker by calling: Pento.Worker.start_link(arg)
