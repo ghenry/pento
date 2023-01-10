@@ -11,8 +11,7 @@ defmodule PentoWeb.SentrypeerEventController do
            SentrypeerEvents.create_sentrypeer_event(sentrypeer_event_params) do
       conn
       |> put_status(:created)
-      |> put_view(PentoWeb.ErrorView)
-      |> render(:"201")
+      |> text("Thanks for using SentryPeer!")
     end
   end
 
