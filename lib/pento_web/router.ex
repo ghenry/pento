@@ -31,7 +31,7 @@ defmodule PentoWeb.Router do
   scope "/api", PentoWeb do
     pipe_through :api
 
-    resources "/events", SentrypeerEventController, only: [:create, :index, :show]
+    resources "/:account_uuid/events", SentrypeerEventController, only: [:create, :index, :show]
   end
 
   # Enables a password protected LiveDashboard
